@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo List</title>
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      main {
+        margin-top: 60px;
+      }
+
+      #content {
+        display: none;
+      }
+
+      form {
+        width: 350px;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        margin-bottom: 0px;
+      }
+
+      div.task-content
+      {
+        /* border: 2px solid red; */
+        font-size: 25pt;
+        height: 22pt;
+        display: flex;
+        align-items: center;
+      }
+
+      #completedTaskList .content {
+        color: grey;
+        text-decoration: line-through;
+      }
+
+      input[type="checkbox"]
+      {
+        transform: scale(1.1);
+        margin-right: 5px;
+        margin-left: 10px;
+        /* height: 50px; */
+      }
+      .taskTemplate label
+      {
+        border: 1.5px solid black;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        padding: 0px;
+        height: 60px;
+        width: 65vw;
+        /* justify-content: center; */
+
+        /* GREEN */
+        background-color: rgb(221, 255, 221);
+        box-shadow: 2px 2px 5px green;
+
+        /* WHITE */
+        /* background-color: rgb(240, 240, 240);
+        box-shadow: 2px 2px 5px black; */
+
+        /* BLUE */
+        /* background-color: aliceblue;
+        box-shadow: 2px 2px 5px rgb(0, 0, 34); */
+
+        margin-bottom: 10px;
+      }
+      .new-task
+      {
+        margin: auto;
+        margin-bottom: 10px;
+        width: 50vw;
+      }
+      .new-task input
+      {
+        height: 50px;
+        font-size:18pt;
+      }
+      body
+      {
+        background-color: darkseagreen;
+        /* background-color: cadetblue; */
+      }
+      .navbar-brand
+      {
+        /* border: 2px solid red; */
+        padding: 0px;
+      }
+      .navbar-brand *
+      {
+        /* border: 2px solid green; */
+        margin: auto;
+        margin: 5px;
+        margin-left: 8px;
+      }
+      #account
+      {
+        font-size: 12pt;
+      }
+      #loader p
+      {
+        color: white;
+        font-size: 25pt;
+      }
+    </style>
+  </head>
+  <body style="font-family: 'Times New Roman', Times, serif;">
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" target="_blank"><h2>
+        Decentralised Blockchain Todo List
+      </h2></a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
+          <small><a class="nav-link" href="#"><span id="account"></span></a></small>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <main role="main" class="col-lg-12 d-flex justify-content-center">
+          <div id="loader" class="text-center">
+            <p class="text-center">Loading...</p>
+          </div>
+          <div id="content">
+            <form class='new-task' onSubmit="App.createTask(); return false;">
+              <input id="newTask" type="text" class="form-control" placeholder="Add task..." required>
+              <input type="submit" hidden="">
+            </form>
+            <ul id="taskList" class="list-unstyled">
+              <div class="taskTemplate" class="checkbox" style="display: none">
+                <label>
+                  <input type="checkbox" />
+                  <div class="content task-content">Task content goes here...</span>
+                </label>
+              </div>
+            </ul>
+            <ul id="completedTaskList" class="list-unstyled">
+            </ul>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/web3/dist/web3.min.js"></script>
+    <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
